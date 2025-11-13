@@ -1,112 +1,11 @@
--- Bootstrap lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
-      { "\nPress any key to exit..." },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
-end
-vim.opt.rtp:prepend(lazypath)
-
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
--- Setup lazy.nvim
-require("lazy").setup({
-  spec = {
-    -- Theme Kanagawa
-    { 
-        'rebelot/kanagawa.nvim',
-        config = function()
-            vim.cmd.colorscheme("kanagawa-wave")
-        end,
-    },
-    -- Telescope avec version compatible Neovim 0.9.5
-    {
-      'nvim-telescope/telescope.nvim',
-      -- Utiliser la branche 0.1.x qui supporte Neovim >= 0.7.0
-      -- Cette branche reçoit encore des corrections de bugs
-      branch = '0.1.x',
-      dependencies = { 'nvim-lua/plenary.nvim' },
-    },
-    {
-        'nvim-treesitter/nvim-treesitter-textobjects',
-    },
-    {
-        'nvim-treesitter/nvim-treesitter',
-        config = function ()
-            -- Highlight Module of nvim-treesitter
-            require('nvim-treesitter.configs').setup {
-                ensure_installed = { "python", "lua", "vim", "vimdoc", "csv", "json", "query", "dockerfile", 
-                                    "cuda", "desktop", "devicetree", "comment", "markdown", "nix", "c" },
-                
-                auto_install = true,
-
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = false,
-                    }, 
-                textobjects = {
-                select = {
-                enable = true,
-                
-                -- Automatically jump forward to textobj, similar to targets.vim
-                lookahead = true,
-                
-                keymaps = {
-                -- You can use the capture groups defined in textobjects.scm
-                ["af"] = "@function.outer",
-                ["if"] = "@function.inner",
-                ["ac"] = "@class.outer",
-                -- You can optionally set descriptions to the mappings (used in the desc parameter of
-                -- nvim_buf_set_keymap) which plugins like which-key display
-                ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-                -- You can also use captures from other query groups like `locals.scm`
-                ["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
-            },
-            -- You can choose the select mode (default is charwise 'v')
-            --
-            -- Can also be a function which gets passed a table with the keys
-            -- * query_string: eg '@function.inner'
-            -- * method: eg 'v' or 'o'
-            -- and should return the mode ('v', 'V', or '<c-v>') or a table
-            -- mapping query_strings to modes.
-            selection_modes = {
-            ['@parameter.outer'] = 'v', -- charwise
-            ['@function.outer'] = 'V', -- linewise
-            ['@class.outer'] = '<c-v>', -- blockwise
-        },
-        -- If you set this to `true` (default is `false`) then any textobject is
-        -- extended to include preceding or succeeding whitespace. Succeeding
-        -- whitespace has priority in order to act similarly to eg the built-in
-        -- `ap`.
-        --
-        -- Can also be a function which gets passed a table with the keys
-        -- * query_string: eg '@function.inner'
-        -- * selection_mode: eg 'v'
-        -- and should return true or false
-        include_surrounding_whitespace = true,
-    },
-},
-            }
-     end,
-    },
-    {
+return     {
           "folke/snacks.nvim",
           priority = 1000,
           lazy = false,
           ---@type snacks.Config
           opts = {
             bigfile = { enabled = true },
+            image =  { enabled = true },
             dashboard = { enabled = true },
             explorer = { enabled = true },
             indent = { enabled = true },
@@ -262,13 +161,4 @@ require("lazy").setup({
             end,
             })
         end,
-    },
-
-},
-  -- Configure any other settings here.
-  install = { colorscheme = { "kanagawa-wave" } },
-  -- automatically check for plugin updates
-  checker = { enabled = true },
-})
-
-
+        }
