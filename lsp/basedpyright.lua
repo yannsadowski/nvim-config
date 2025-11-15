@@ -11,8 +11,8 @@ return {
                 typeCheckingMode        = "off",
                 
                 autoSearchPaths         = true,
-                useLibraryCodeForType   = true,
-                autoImportCompletion    = true
+                useLibraryCodeForTypes   = true,
+                autoImportCompletions    = true
 
                             
             },
