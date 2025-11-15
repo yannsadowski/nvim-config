@@ -7,7 +7,16 @@ return {
 		-- https://docs.basedpyright.com/latest/configuration/language-server-settings/
 		basedpyright = {
 			disableOrganizeImports = true,
-			analysis = { typeCheckingMode = "off" },
+			analysis = { 
+                typeCheckingMode        = "off",
+                
+                autoSearchPaths         = true,
+                useLibraryCodeForType   = true,
+                autoImportCompletion    = true
+
+                            
+            },
+
 		},
 	},
 }
