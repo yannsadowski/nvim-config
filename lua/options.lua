@@ -24,6 +24,6 @@ vim.opt.termguicolors = true
 
 -- Set up diagnostics
 
-vim. diagnostics.config({
+vim.diagnostic.config({
     virtual_lines = true,
 })
