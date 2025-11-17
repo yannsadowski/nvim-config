@@ -2,7 +2,7 @@
 return {
 	cmd = { "basedpyright-langserver", "--stdio" },
 	filetypes = { "python" },
-	root_markers = { "pyproject.toml", "requirements.txt" },
+	root_markers = { "pyproject.toml" },
 	settings = {
 		-- https://docs.basedpyright.com/latest/configuration/language-server-settings/
 		basedpyright = {

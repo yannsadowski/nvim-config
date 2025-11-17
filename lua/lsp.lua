@@ -32,7 +32,7 @@ local function on_attach(ev)
 	end
 
 	-- A bunch of keymappings are now setup by default. See :h lsp-defaults
-	vim.lsp.completion.enable(true, ev.data.client_id, ev.buf, { autotrigger = true })
+	vim.lsp.completion.enable(true, ev.data.client_id, ev.buf, { autotrigger = false})
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition", buffer = ev.buf })
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration", buffer = ev.buf })
 end
