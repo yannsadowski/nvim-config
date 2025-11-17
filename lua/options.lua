@@ -21,3 +21,9 @@ vim.opt.inccommand = "split"
 vim.opt.ignorecase = true
 
 vim.opt.termguicolors = true
+
+-- Set up diagnostics
+
+vim. diagnostics.config({
+    virtual_lines = true,
+})
