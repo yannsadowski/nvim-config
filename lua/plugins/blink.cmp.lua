@@ -1,7 +1,7 @@
 return {
   'saghen/blink.cmp',
   -- optional: provides snippets for the snippet source
-  dependencies = { 'rafamadriz/friendly-snippets' },
+  dependencies = { 'rafamadriz/friendly-snippets', 'folke/lazydev.nvim',},
 
   -- use a release tag to download pre-built binaries
   version = '1.*',
@@ -51,8 +51,8 @@ return {
       default = {'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
       providers = {
           lazydev = {
-              name = "Lazydev",
-              module = "lazydev.integration.blink",
+              name = "LazyDev",
+              module = "lazydev.integrations.blink",
               score_offset = 100,
           },
       },

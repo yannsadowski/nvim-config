@@ -29,6 +29,6 @@ require("lazy").setup({
       install = { colorscheme = { "kanagawa-wave" } },
       -- automatically check for plugin updates
       checker = { enabled = true },
-})
+    })
 
 
