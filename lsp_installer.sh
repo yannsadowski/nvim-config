@@ -196,7 +196,7 @@ install_lsp_servers() {
         
         case "$method" in
             npm)
-                if [ "$package" == "bash-language-server" ]; then
+                if [ "$package" == "bash-language-server"  &&  "$package" == "basedpyright" ]; then
                     npm install -g "$package"
                 else
                     npm install "$package"
